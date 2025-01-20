@@ -8,7 +8,14 @@ use crate::texture::Texture;
 
 use crate::TexAndData;
 
-use super::{egui_filter_to_3ds, ImgDat};
+use super::ImgDat;
+
+fn egui_filter_to_3ds(t: egui::TextureFilter) -> ctru_sys::GPU_TEXTURE_FILTER_PARAM {
+    match t {
+        egui::TextureFilter::Nearest => ctru_sys::GPU_NEAREST,
+        egui::TextureFilter::Linear => ctru_sys::GPU_LINEAR,
+    }
+}
 
 pub fn texdelta(
     texmap: &mut HashMap<egui::TextureId, TexAndData>,

@@ -10,45 +10,6 @@ pub struct AllPass {
     pub program: Program
 }
 
-#[repr(C)]
-#[derive(Copy, Clone)]
-pub struct Vtx {
-    pos: [f32; 2],
-    uv: [f32; 2],
-    color: u32,
-}
-
-pub static VERTICES: &[Vtx] = &[
-    Vtx {
-        pos: [0.0, 0.0],
-        // pos: [0.0 * 320.0, 0.25 * 240.0,0.0],
-        uv: [0.0, 0.0],
-        color: 0xFF,
-    },
-    Vtx {
-        //DOWN
-        pos: [0.0, 0.0],
-        // pos: [0.25 * 320.0, 0.75 * 240.0,0.0],
-        uv: [0.0, 0.0],
-        color: 0xFF,
-    },
-    Vtx {
-        //DOWN RIGHT
-        pos: [0.0, 0.0],
-        // pos: [0.75 * 320.0, 0.75 * 240.0,0.0],
-        uv: [0.0, 0.0],
-        color: 0xFF,
-    },
-    Vtx {
-        //RIGHT
-        pos: [0.0, 0.0],
-        uv: [0.0, 0.0],
-        color: 0xFF,
-    },
-];
-
-pub static INDICES: &[u16] = &[0, 1, 2];
-
 static SHADER_BYTES: &[u8] = include_shader!("assets/vshader.pica");
 
 impl AllPass {
