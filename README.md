@@ -26,7 +26,7 @@ egui_citro3d::run_egui(|ctx,specifics| {
 
 ## Documentation
 
-This `README` file is all the documentation so far
+Check out the [wiki](https://github.com/LexiBigCheese/egui_citro3d/wiki)!
 
 ## License
 
