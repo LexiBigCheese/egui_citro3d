@@ -95,6 +95,7 @@ impl ImeStage {
     }
 }
 
+/// For running after the bottom screen's `ctx.run`
 pub(crate) fn ime_part_b(ime: &mut Option<egui::output::IMEOutput>, ime_stage: &ImeStage, current_text_value: &mut Option<String>, current_float_value: &mut Option<f64>, out: &egui::FullOutput) {
     for e in &out.platform_output.events {
         match e {
@@ -110,6 +111,7 @@ pub(crate) fn ime_part_b(ime: &mut Option<egui::output::IMEOutput>, ime_stage: &
     *ime = out.platform_output.ime;
 }
 
+/// For running before running the bottom screen's `ctx.run`
 pub(crate) fn ime_part_a(gfx: &ctru::prelude::Gfx, apt: &ctru::prelude::Apt, ime_output: Option<egui::output::IMEOutput>, ime_stage: &mut ImeStage, current_text_value: &mut Option<String>, current_float_value: &mut Option<f64>, events: &mut Vec<egui::Event>) {
     if let Some(_) = ime_output {
         if *ime_stage == ImeStage::Nothing {
