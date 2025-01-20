@@ -140,7 +140,14 @@ impl ImeStage {
     }
 }
 
-pub fn run_egui(mut run_ui: impl FnMut(&egui::Context, &Hid)) {
+#[derive(Clone, Copy)]
+pub struct Specifics<'a> {
+    pub hid: &'a Hid,
+    pub top_viewport_id: egui::ViewportId,
+    pub bottom_viewport_id: egui::ViewportId,
+}
+
+pub fn run_egui(mut run_ui: impl FnMut(&egui::Context, Specifics)) {
     let AllPass {
         gfx,
         mut hid,
@@ -274,7 +281,7 @@ pub fn run_egui(mut run_ui: impl FnMut(&egui::Context, &Hid)) {
                 ..Default::default()
             },
             |c| {
-                run_ui(c, &hid);
+                run_ui(c, Specifics {hid: &hid,top_viewport_id,bottom_viewport_id});
             },
         );
         for e in &out.platform_output.events {
@@ -310,7 +317,7 @@ pub fn run_egui(mut run_ui: impl FnMut(&egui::Context, &Hid)) {
                 ..Default::default()
             },
             |c| {
-                run_ui(c, &hid);
+                run_ui(c, Specifics {hid: &hid,top_viewport_id,bottom_viewport_id});
             },
         );
         everything_that_happens_after_out(

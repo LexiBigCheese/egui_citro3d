@@ -9,9 +9,8 @@ This repository is currently in dire need of a refactor, which should come in th
 ## Getting Started
 
 ```rust
-let top_viewport_id = egui::ViewportId::from_hash_of("top_viewport");
-let bottom_viewport_id = egui::ViewportId::from_hash_of("bottom_viewport");
-egui_citro3d::run_egui(|ctx,hid| {
+egui_citro3d::run_egui(|ctx,specifics| {
+    let egui_citro3d::Specifics {hid, top_viewport_id, bottom_viewport_id} = specifics;
     if ctx.viewport_id() == top_viewport_id {
         egui::CentralPanel::default().show(&ctx, |ui| {
             ui.label("Hello World on the Top Screen!");
