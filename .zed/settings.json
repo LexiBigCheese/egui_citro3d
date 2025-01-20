@@ -1,0 +1,53 @@
+// Folder-specific settings
+//
+// For a full list of overridable settings, and general information on folder-specific settings,
+// see the documentation: https://zed.dev/docs/configuring-zed#settings-files
+{
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "diagnostics": {
+          "disabled": ["macro-error"]
+        },
+        "check": {
+          "overrideCommand": [
+            "cargo",
+            "3ds",
+            // or "clippy" if you want to use clippy
+            "check",
+            "--message-format=json"
+          ]
+        },
+        "buildScripts": {
+          "overrideCommand": [
+            "cargo",
+            "3ds",
+            // or "clippy" if you want to use clippy
+            "check",
+            "--quiet",
+            "--message-format=json"
+          ],
+          "useRustcWrapper": false
+        },
+        "checkOnSave": true,
+        // even with overrideCommand, this is still needed for build scripts to work properly:
+        "cargo": {
+          "target": "armv6k-nintendo-3ds"
+        },
+        "server": {
+          "extraEnv": {
+            // Adjust as needed to point to your installation of devkitPro:
+            "DEVKITPRO": "/opt/devkitpro",
+            "DEVKITARM": "/opt/devkitpro/devkitARM",
+            // This should be the same as your usual $PATH, but with devkitPro paths added to the beginning.
+            // Might not be necessary if you already added these to your host $PATH.
+            "PATH": "/opt/devkitpro/devkitARM/bin:/opt/devkitpro/tools/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+          }
+        },
+        "procMacro": {
+          "enable": true
+        }
+      }
+    }
+  }
+}

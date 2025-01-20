@@ -1,0 +1,9 @@
+[env]
+DEVKITPRO="/opt/devkitpro/"
+DEVKITARM="/opt/devkitpro/devkitARM/"
+TARGET_CC="/opt/devkitpro/devkitARM/bin/arm-none-eabi-gcc"
+CC="/opt/devkitpro/devkitARM/bin/arm-none-eabi-gcc"
+CFLAGS_armv6k_nintendo_3ds="-march=armv6k -mfloat-abi=hard -finline-limit=100000"
+
+[build]
+target = "armv6k-nintendo-3ds"

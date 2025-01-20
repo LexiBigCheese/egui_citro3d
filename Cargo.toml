@@ -1,0 +1,27 @@
+[package]
+name = "egui_citro3d"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+ctru-rs = { git = "https://github.com/rust3ds/ctru-rs" }
+ctru-sys = { git = "https://github.com/rust3ds/ctru-rs" }
+citro3d = {git = "https://github.com/rust3ds/citro3d-rs"}
+citro3d-sys = {git = "https://github.com/rust3ds/citro3d-rs"}
+egui = { version = "0.30.0", default-features = false, features = ["default_fonts","bytemuck"] }
+bytemuck = { version = "1.21.0", features = ["derive"] }
+swizzle_3ds = "0.2.0"
+derive_more = { version = "1.0.0", features = ["from"] }
+
+
+# To anybody out there using this, check https://github.com/rust3ds/ctru-rs/issues/205
+[profile.dev]
+opt-level = 3
+lto="thin"
+
+[patch.crates-io]
+ring = { git = "https://github.com/briansmith/ring" }
+[profile.dev.package.ring]
+opt-level = 1
+[profile.release.package.ring]
+opt-level = 1
