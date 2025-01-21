@@ -4,6 +4,7 @@ use crate::texdelta;
 
 use super::configure_texenvs;
 
+#[cfg(feature = "dbg_printlns")]
 use ctru::prelude::KeyPad;
 
 use super::TexAndData;
@@ -12,10 +13,11 @@ use std::collections::HashMap;
 
 use citro3d::Instance;
 
+#[cfg(feature = "dbg_printlns")]
 use ctru::prelude::Hid;
 
 pub(crate) fn everything_that_happens_after_out(
-    hid: &Hid,
+    #[cfg(feature = "dbg_printlns")] hid: &Hid,
     instance: &mut Instance,
     ctx: &egui::Context,
     texmap: &mut HashMap<egui::TextureId, TexAndData>,
@@ -25,12 +27,15 @@ pub(crate) fn everything_that_happens_after_out(
     render_target: &mut citro3d::render::Target<'_>,
     out: egui::FullOutput,
 ) {
+    #[cfg(feature = "dbg_printlns")]
     if !out.textures_delta.set.is_empty() {
         println!("Adding/Patching {} Textures", out.textures_delta.set.len());
     }
+    #[cfg(feature = "dbg_printlns")]
     if hid.keys_down().contains(KeyPad::B) {
         println!("Rendering {} shapes", out.shapes.len());
     }
+    #[cfg(feature = "dbg_printlns")]
     if hid.keys_down().contains(KeyPad::Y) {
         println!("{:#?}", out.shapes);
     }
@@ -48,6 +53,7 @@ pub(crate) fn everything_that_happens_after_out(
 
         instance.bind_vertex_uniform(projection_uniform_idx, twovecs_to_uniform(twovecs));
         instance.set_attr_info(attr_info);
+        #[cfg(feature = "dbg_printlns")]
         if hid.keys_down().contains(KeyPad::B) {
             println!("Rendering {} prims", tessel.len());
         }
@@ -62,6 +68,7 @@ pub(crate) fn everything_that_happens_after_out(
             tex.bind(0);
             configure_texenvs::configure_texenv(instance, data);
             for mesh in mesh.split_to_u16() {
+                #[cfg(feature = "dbg_printlns")]
                 if hid.keys_down().contains(KeyPad::X) {
                     println!("Tex  : {}x{}@{}", tex.width, tex.height, tex.format);
                     println!("Verts: ");

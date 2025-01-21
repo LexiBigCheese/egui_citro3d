@@ -66,6 +66,7 @@ fn single_delta(
         }
         ComparisonResult::CreateNewTexture => {
             let delta_to_data = delta_to_data(&delta);
+            #[cfg(feature = "dbg_printlns")]
             println!(
                 "Texture is {}x{}",
                 delta.image.width(),
@@ -77,6 +78,7 @@ fn single_delta(
                 match delta_to_data {
                     super::ImgDat::Rgba8(..) => GPU_RGBA8,
                     super::ImgDat::Alpha8(..) => {
+                        #[cfg(feature = "dbg_printlns")]
                         println!("Haiiii i'm a goob!");
                         GPU_A8
                     }
@@ -157,6 +159,7 @@ fn convert_font_to_lum8(x: &Vec<f32>) -> Vec<u8> {
             max = (i as isize, x);
         }
     }
+    #[cfg(feature = "dbg_printlns")]
     println!("Max Pixel: #{} with value {}", max.0, max.1);
     x.into_iter().map(|&x| (x * 255.0).floor() as u8).collect()
 }

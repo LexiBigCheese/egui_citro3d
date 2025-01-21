@@ -56,6 +56,7 @@ pub fn run_egui(mut run_ui: impl FnMut(&egui::Context, Specifics)) {
         shader,
         program,
     } = AllPass::new();
+    #[cfg(feature = "dbg_printlns")]
     println!("Waow");
     let ctx = egui::Context::default();
     // ctx.tessellation_options_mut(|opts| {
@@ -134,7 +135,7 @@ pub fn run_egui(mut run_ui: impl FnMut(&egui::Context, Specifics)) {
         );
         ime::ime_part_b(&mut ime, &ime_stage, &mut current_text_value, &mut current_float_value, &out);
         render::everything_that_happens_after_out(
-            &hid,
+            #[cfg(feature = "dbg_printlns")] &hid,
             &mut instance,
             &ctx,
             &mut texmap,
@@ -162,7 +163,7 @@ pub fn run_egui(mut run_ui: impl FnMut(&egui::Context, Specifics)) {
             },
         );
         render::everything_that_happens_after_out(
-            &hid,
+            #[cfg(feature = "dbg_printlns")] &hid,
             &mut instance,
             &ctx,
             &mut texmap,

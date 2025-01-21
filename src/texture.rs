@@ -25,6 +25,7 @@ impl Texture {
                 mipmap,
             }
         } else {
+            #[cfg(feature = "dbg_printlns")]
             println!("Whoops! you have to put the CD in your computer.");
             panic!();
         }
