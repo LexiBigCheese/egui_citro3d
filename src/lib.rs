@@ -102,16 +102,6 @@ pub fn run_egui(mut run_ui: impl FnMut(&egui::Context, Specifics)) {
     unsafe {
         //If you delete this call, faces *will* be culled
         citro3d_sys::C3D_CullFace(ctru_sys::GPU_CULL_NONE);
-        // citro3d_sys::C3D_DepthTest(false, ctru_sys::GPU_NEVER, ctru_sys::GPU_WRITE_ALL);
-        // citro3d_sys::C3D_EarlyDepthTest(false, ctru_sys::GPU_NEVER, 0);
-        // citro3d_sys::C3D_AlphaBlend(
-        //     ctru_sys::GPU_BLEND_ADD,
-        //     ctru_sys::GPU_BLEND_ADD,
-        //     ctru_sys::GPU_SRC_ALPHA,
-        //     ctru_sys::GPU_ONE_MINUS_SRC_ALPHA,
-        //     ctru_sys::GPU_SRC_ALPHA,
-        //     ctru_sys::GPU_ONE_MINUS_SRC_ALPHA,
-        // );
     }
 
     while apt.main_loop() {
