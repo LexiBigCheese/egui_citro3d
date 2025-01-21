@@ -102,7 +102,7 @@ pub fn run_egui(mut run_ui: impl FnMut(&egui::Context, Specifics)) {
     unsafe {
         citro3d_sys::C3D_CullFace(ctru_sys::GPU_CULL_NONE);
         citro3d_sys::C3D_DepthTest(false, ctru_sys::GPU_NEVER, ctru_sys::GPU_WRITE_ALL);
-        citro3d_sys::C3D_EarlyDepthTest(false, ctru_sys::GPU_NEVER, 0);
+        // citro3d_sys::C3D_EarlyDepthTest(false, ctru_sys::GPU_NEVER, 0);
         // citro3d_sys::C3D_AlphaBlend(
         //     ctru_sys::GPU_BLEND_ADD,
         //     ctru_sys::GPU_BLEND_ADD,
