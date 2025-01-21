@@ -27,7 +27,7 @@ impl Texture {
         } else {
             #[cfg(feature = "dbg_printlns")]
             println!("Whoops! you have to put the CD in your computer.");
-            panic!();
+            panic!("Texture could not be created!");
         }
     }
     ///Ensure that the buffer's size matches the width, height, and format of the texture.
