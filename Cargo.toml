@@ -13,6 +13,8 @@ bytemuck = { version = "1.21.0", features = ["derive"] }
 swizzle_3ds = "0.2.0"
 derive_more = { version = "1.0.0", features = ["from"] }
 
+[features]
+dbg_printlns = []
 
 # To anybody out there using this, check https://github.com/rust3ds/ctru-rs/issues/205
 [profile.dev]
