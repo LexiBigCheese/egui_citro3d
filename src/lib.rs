@@ -100,6 +100,7 @@ pub fn run_egui(mut run_ui: impl FnMut(&egui::Context, Specifics)) {
     let mut current_float_value: Option<f64> = None;
     let mut last_pos: egui::Pos2 = Default::default();
     unsafe {
+        //If you delete this call, faces *will* be culled
         citro3d_sys::C3D_CullFace(ctru_sys::GPU_CULL_NONE);
         // citro3d_sys::C3D_DepthTest(false, ctru_sys::GPU_NEVER, ctru_sys::GPU_WRITE_ALL);
         // citro3d_sys::C3D_EarlyDepthTest(false, ctru_sys::GPU_NEVER, 0);
